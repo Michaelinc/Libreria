@@ -1,0 +1,6 @@
+com/ecodeup/dao/LibroDAO.class
+com/ecodeup/interfaces/Bean.class
+com/ecodeup/model/Libro.class
+com/ecodeup/interfaces/Repository.class
+com/ecodeup/controller/LibroBean.class
+com/ecodeup/Util/JPAUtil.class

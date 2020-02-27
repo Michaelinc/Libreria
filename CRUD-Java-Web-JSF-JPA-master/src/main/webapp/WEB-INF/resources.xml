@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<ResourceLink name="jdbc/h2"
+    global="h2"
+    type="javax.sql.DataSource"/>
+</resources>

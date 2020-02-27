@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+            <meta charset="utf-8" name="viewport"
+                    content="width=device-width, initial-scale=1"
+                    http-equiv="X-UA-Conpatible" />
+            <title>Inicio</title>
+    </h:head>
+    <h:body>
+        <h2>
+            <h:outputText value="Lista Libros"></h:outputText>
+        </h2>
+    </h:body>
+    <f:view>
+        <h:form>
+            <h:dataTable  value="#{libroBean.listar()}" var="libro" border="2">
+                <h:column>
+                    <f:facet name="header" >Título</f:facet>
+                    <h:outputText value="#{libro.titulo}"></h:outputText>
+                </h:column>
+               
+                <h:column>
+                    <f:facet name="header" >Edición</f:facet>
+                    <h:outputText value="#{libro.edicion}"></h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header" >ISBN</f:facet>
+                    <h:outputText value="#{libro.ISBN}"></h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header" >Descripción</f:facet>
+                    <h:outputText value="#{libro.descripcion}"></h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header" >Páginas</f:facet>
+                    <h:outputText value="#{libro.paginas}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </f:view>
+
+    
+</html>
