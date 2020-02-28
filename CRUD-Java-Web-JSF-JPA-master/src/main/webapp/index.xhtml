@@ -16,7 +16,7 @@
     </h:body>
     <f:view>
         <h:form>
-            <h:dataTable  value="#{libroBean.buscar(1)}" var="libro" border="2">
+            <h:dataTable  value="#{libroBean.listar()}" var="libro" border="2">
                 <h:column>
                     <f:facet name="header" >Título</f:facet>
                     <h:outputText value="#{libro.titulo}"></h:outputText>

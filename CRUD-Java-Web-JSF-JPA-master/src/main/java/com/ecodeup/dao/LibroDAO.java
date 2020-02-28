@@ -9,21 +9,25 @@ import com.ecodeup.Util.JPAUtil;
 import com.ecodeup.interfaces.Repository;
 import java.util.ArrayList;
 import javax.persistence.Query;
+import org.hibernate.Session;
 
 public class LibroDAO implements Repository<Libro,String>{
-	EntityManager entity = JPAUtil.getEntityManagerFactory().createEntityManager();
+	
+    //EntityManager entity = JPAUtil.getEntityManagerFactory().createEntityManager();
+    Session session  = JPAUtil.openSession();
     @Override
     public Libro save(Libro o) {
-        entity.getTransaction().begin();
-        entity.persist(o);
-        entity.getTransaction().commit();
-        return o;
+        session.beginTransaction();
+        Libro l = (Libro) session.save(o);
+        session.getTransaction().commit();
+        return l;
     }
 
     @Override
     public void delete(String id) {
+        session.beginTransaction();
         Libro o = new Libro();
-        o = entity.find(Libro.class, id);
+        o = session.find(Libro.class, id);
         entity.getTransaction().begin();
         entity.remove(o);
         entity.getTransaction().commit();
@@ -31,9 +35,9 @@ public class LibroDAO implements Repository<Libro,String>{
 
     @Override
     public Libro update(Libro o) {
-        entity.getTransaction().begin();
-        entity.merge(o);
-        entity.getTransaction().commit();
+        session.beginTransaction();
+        Libro l = (Libro) session.merge(o);
+        session.getTransaction().commit();
         return o;
     }
 
@@ -47,10 +51,8 @@ public class LibroDAO implements Repository<Libro,String>{
 
     @Override
     public Libro getOne(String id) {
-        Libro o = new Libro();
-        o = entity.find(Libro.class, id);
-        // JPAUtil.shutdown();
-        return o;
+        session.beginTransaction();
+        return session.get(Libro.class, id);
     }
         
 }
